@@ -12,7 +12,7 @@ console.log('`List` component loaded asynchronously');
 @Component({
     selector: 'list',
     styles: [
-        require('./list.css')
+        require('./list.scss')
     ],
     template: require('./list.html')
 })
@@ -28,7 +28,7 @@ export class List {
             // Subscribe to the observable to get the parsed people object and attach it to the
             // component
             .subscribe(pokemons => this.pokemons = pokemons.body.map((item) => {
-                return {name: item['pokemon-name'], id: item['national-pokedex-number']};
+                return {img: item['image-url'], name: item['pokemon-name'], id: item['national-pokedex-number']};
             }));
     }
 

@@ -1,14 +1,12 @@
 <div>
     <div class="row">
-        <md-card class="col s4">This div is 12-columns wide</md-card>
-        <md-cardv class="col s4">This div is 6-columns wide</md-cardv>
-        <md-card class="col s4">This div is 6-columns wide</md-card>
+        <div *ngFor="let pokemon of pokemons; let i = index" class="col-md-3 pokemon-item">
+            <div class="pokemon-item__image img-thumbnail">
+                <img src="{{ pokemon.img }}" alt="{{ pokemon.name }}">
+            </div>
+            <a [routerLink]="['Detail', {id: pokemon.id}]">
+                {{ pokemon.name }}
+            </a>
+        </div>
     </div>
 </div>
-<ul>
-    <li *ngFor="let pokemon of pokemons; let i = index">
-        <a [routerLink]="['Detail', {id: pokemon.id}]">
-            {{ pokemon.name }}
-        </a>
-    </li>
-</ul>

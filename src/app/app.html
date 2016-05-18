@@ -1,0 +1,42 @@
+<my-header></my-header>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">{{ name }}</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a router-active [routerLink]=" ['Index'] ">Index</a></li>
+                <li><a router-active [routerLink]=" ['Home'] ">Home</a></li>
+                <li><a router-active [routerLink]=" ['About'] ">About</a></li>
+                <li><a router-active [routerLink]=" ['List'] ">List</a></li>
+                <li><a router-active [routerLink]=" ['Profile'] ">Profile</a></li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class="container">
+
+    <md-progress-bar mode="indeterminate" color="primary" *ngIf="loading"></md-progress-bar>
+
+    <router-outlet></router-outlet>
+
+    <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
+
+    <footer>
+        <img [src]="angularclassLogo" width="6%">
+        WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a>
+    </footer>
+</div>
+
+<my-footer></my-footer>
