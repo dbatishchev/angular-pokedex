@@ -5,8 +5,8 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { RouteConfig, Router } from '@angular/router-deprecated';
 
 import { AppState } from './app.service';
-import { Home } from './home';
-import { RouterActive } from './router-active';
+import { Home } from './components/pages/home';
+import { RouterActive } from './directives/router-active';
 
 //import {header} from './header.component';
 //import {footer} from './footer.component';
@@ -32,10 +32,10 @@ import { RouterActive } from './router-active';
     {path: '/', name: 'Index', component: Home, useAsDefault: true},
     {path: '/home', name: 'Home', component: Home},
     // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
-    {path: '/about', name: 'About', loader: () => require('es6-promise!./about')('About')},
-    {path: '/list', name: 'List', loader: () => require('es6-promise!./list')('List')},
-    {path: '/list/:id', name: 'Detail', loader: () => require('es6-promise!./detail')('Detail')},
-    {path: '/profile', name: 'Profile', loader: () => require('es6-promise!./profile')('Profile')}
+    {path: '/about', name: 'About', loader: () => require('es6-promise!./components/pages/about')('About')},
+    {path: '/list', name: 'List', loader: () => require('es6-promise!./components/pages/list')('List')},
+    {path: '/list/:id', name: 'Detail', loader: () => require('es6-promise!./components/pages/detail')('Detail')},
+    {path: '/profile', name: 'Profile', loader: () => require('es6-promise!./components/pages/profile')('Profile')}
 ])
 export class App {
     angularclassLogo = 'assets/img/angularclass-avatar.png';
