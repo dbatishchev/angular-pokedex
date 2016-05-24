@@ -8,8 +8,8 @@ import { AppState } from './app.service';
 import { Home } from './components/pages/home';
 import { RouterActive } from './directives/router-active';
 
-//import {header} from './header.component';
-//import {footer} from './footer.component';
+import {Navbar} from './components/common/header.component';
+import {Footer} from './components/common/footer.component';
 
 /*
  * App Component
@@ -19,7 +19,11 @@ import { RouterActive } from './directives/router-active';
     selector: 'app',
     pipes: [],
     providers: [],
-    directives: [RouterActive],
+    directives: [
+        RouterActive,
+        Navbar,
+        Footer
+    ],
     encapsulation: ViewEncapsulation.None,
     styles: [
         require('normalize.css'),

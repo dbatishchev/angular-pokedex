@@ -1,9 +1,4 @@
 import { Component } from '@angular/core';
-
-
-import {Navbar} from '../../common/header.component';
-import {Footer} from '../../common/footer.component';
-
 import { AppState } from '../../../app.service';
 import { Title } from './title';
 import { XLarge } from './x-large';
@@ -20,9 +15,7 @@ import { XLarge } from './x-large';
     // We need to tell Angular's compiler which directives are in our template.
     // Doing so will allow Angular to attach our behavior to an element
     directives: [
-        XLarge,
-        Navbar,
-        Footer
+        XLarge
     ],
     // We need to tell Angular's compiler which custom pipes are in our template.
     pipes: [],
