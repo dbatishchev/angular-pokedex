@@ -2,6 +2,10 @@
  * These are globally available services in any component or any other service
  */
 
+import {WindowService} from './../../app/services/window.service';
+import {AuthService} from './../../app/services/auth.service';
+import {CookieService} from './../../app/services/cookies.service';
+
 // Angular 2
 import { FORM_PROVIDERS, HashLocationStrategy, LocationStrategy } from '@angular/common';
 // Angular 2 Http
@@ -14,6 +18,7 @@ import { ROUTER_PROVIDERS } from '@angular/router-deprecated';
 * providers/directives/pipes that only live in our browser environment
 */
 export const APPLICATION_PROVIDERS = [
+  CookieService, AuthService, WindowService,
   ...FORM_PROVIDERS,
   ...HTTP_PROVIDERS,
   ...ROUTER_PROVIDERS,
