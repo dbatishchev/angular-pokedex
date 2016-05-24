@@ -33,7 +33,13 @@ export class AuthService {
                     .replace('__scopes__', config.scopes);
                 this.oAuthUserUrl = config.userInfoUrl;
                 this.oAuthUserNameField = config.userInfoNameField;
-            })
+            });
+        this.userInfo = JSON.parse(localStorage.getItem('userInfo'));
+        this.token = localStorage.getItem('token');
+        this.expires = localStorage.getItem('expires');
+        if (this.token) {
+            this.authenticated = true;
+        }
     }
 
     public doLogin() {
@@ -70,6 +76,9 @@ export class AuthService {
                         this.expires = new Date();
                         this.expires = this.expires.setSeconds(this.expires.getSeconds() + expiresSeconds);
 
+                        localStorage.setItem('token', this.token);
+                        localStorage.setItem('expires', this.expires);
+
                         this.windowHandle.close();
                         this.emitAuthStatus(true);
                         this.fetchUserInfo();
@@ -85,7 +94,6 @@ export class AuthService {
         this.expires = 0;
         this.token = null;
         this.emitAuthStatus(true);
-        console.log('Session has been cleared');
     }
 
     private emitAuthStatus(success:boolean) {
@@ -109,6 +117,7 @@ export class AuthService {
                 .map(res => res.json())
                 .subscribe(info => {
                     this.userInfo = info;
+                    localStorage.setItem('userInfo', JSON.stringify(this.userInfo));
                 }, err => {
                     console.error("Failed to fetch user info:", err);
                 });
